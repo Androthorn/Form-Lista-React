@@ -49,8 +49,7 @@ function ProdutoForm({ addProduto, setMostrarForm }) {
         Disponível para venda?
         <select
           value={disponivelVenda}
-          onChange={e => setDisponivelVenda(e.target.value)}
-        >
+          onChange={e => setDisponivelVenda(e.target.value)}>
           <option value="sim">Sim</option>
           <option value="nao">Não</option>
         </select>

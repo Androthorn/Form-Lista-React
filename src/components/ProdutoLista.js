@@ -1,5 +1,4 @@
 import React from 'react'
-import ProdutoItem from './ProdutoItem'
 
 function ProdutoLista({ produtos, setMostrarForm }) {
   const produtosOrdenados = produtos.slice().sort((a, b) => a.valor - b.valor)
@@ -18,7 +17,10 @@ function ProdutoLista({ produtos, setMostrarForm }) {
         </thead>
         <tbody>
           {produtosOrdenados.map((produto, index) => (
-            <ProdutoItem key={index} produto={produto} />
+            <tr key={index}>
+              <td>{produto.nome}</td>
+              <td>{produto.valor?.toFixed(2)}</td>
+            </tr>
           ))}
         </tbody>
       </table>
