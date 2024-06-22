@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import ProdutoForm from './components/ProdutoForm';
+import ProdutoLista from './components/ProdutoLista';
 import './App.css';
 
 function App() {
+  const [produtos, setProdutos] = useState([]);
+  const [mostrarForm, setMostrarForm] = useState(true);
+
+  const addProduto = (produto) => {
+    setProdutos([...produtos, produto]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {mostrarForm ? (
+        <ProdutoForm addProduto={addProduto} setMostrarForm={setMostrarForm} />
+      ) : (
+        <ProdutoLista produtos={produtos} setMostrarForm={setMostrarForm} />
+      )}
     </div>
   );
 }
