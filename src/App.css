@@ -13,6 +13,14 @@ body {
 
 form {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+
+form button {
+  width: fit-content;
 }
 
 table {
@@ -20,11 +28,14 @@ table {
   border-collapse: collapse;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
 }

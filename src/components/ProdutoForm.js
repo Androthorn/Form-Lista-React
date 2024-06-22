@@ -18,7 +18,6 @@ function ProdutoForm() {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        {' '}
         Nome do Produto:
         <input
           type="text"
@@ -26,9 +25,7 @@ function ProdutoForm() {
           onChange={e => setNome(e.target.value)}
         />
       </label>
-      <br />
       <label>
-        {' '}
         Descrição do produto:
         <input
           type="text"
@@ -36,9 +33,7 @@ function ProdutoForm() {
           onChange={e => setDescricao(e.target.value)}
         />
       </label>
-      <br />
       <label>
-        {' '}
         Valor do Produto:
         <input
           type="number"
@@ -46,9 +41,7 @@ function ProdutoForm() {
           onChange={e => setValor(e.target.value)}
         />
       </label>
-      <br />
       <label>
-        {' '}
         Disponível para venda?
         <select
           value={disponivelVenda}
@@ -57,8 +50,8 @@ function ProdutoForm() {
           <option value="nao">Não</option>
         </select>
       </label>
-      <br />
       <button type="submit">Adicionar Produto</button>
+      <button onClick={() => navigate('/')}>Voltar</button>
     </form>
   )
 }
