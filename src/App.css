@@ -19,6 +19,15 @@ form {
   row-gap: 10px;
 }
 
+.input-error {
+  border-color: red;
+}
+
+.input-error-message {
+  color: red;
+  font-size: 0.8rem;
+}
+
 form button {
   width: fit-content;
 }

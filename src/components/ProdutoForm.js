@@ -8,9 +8,13 @@ function ProdutoForm() {
   const [descricao, setDescricao] = useState('')
   const [valor, setValor] = useState(0)
   const [disponivelVenda, setDisponivelVenda] = useState('sim')
+  const [erroValidacao, setErroValidacao] = useState(null)
 
   const handleSubmit = e => {
     e.preventDefault()
+    if (nome === '') {
+      return setErroValidacao({ nome: 'Campo obrigatório' })
+    }
     addProduto({ nome, descricao, valor: parseFloat(valor), disponivelVenda })
     navigate('/')
   }
@@ -23,8 +27,12 @@ function ProdutoForm() {
           type="text"
           value={nome}
           onChange={e => setNome(e.target.value)}
+          className={erroValidacao?.nome ? 'input-error' : ''}
         />
       </label>
+      {erroValidacao?.nome && (
+        <span className="input-error-message">{erroValidacao.nome}</span>
+      )}
       <label>
         Descrição do produto:
         <input
