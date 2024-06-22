@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function ProdutoForm({ addProduto, setMostrarForm }) {
+function ProdutoForm({ addProduto }) {
+  const navigate = useNavigate()
   const [nome, setNome] = useState('')
   const [descricao, setDescricao] = useState('')
   const [valor, setValor] = useState(0)
@@ -9,7 +11,7 @@ function ProdutoForm({ addProduto, setMostrarForm }) {
   const handleSubmit = e => {
     e.preventDefault()
     addProduto({ nome, descricao, valor: parseFloat(valor), disponivelVenda })
-    setMostrarForm(false)
+    navigate('/')
   }
 
   return (

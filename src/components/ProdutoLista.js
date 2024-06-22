@@ -1,11 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function ProdutoLista({ produtos, setMostrarForm }) {
-  const produtosOrdenados = produtos.slice().sort((a, b) => a.valor - b.valor)
+function ProdutoLista({ produtos }) {
+  const navigate = useNavigate()
+  const produtosOrdenados = [].slice().sort((a, b) => a.valor - b.valor)
 
   return (
     <div>
-      <button onClick={() => setMostrarForm(true)}>
+      <button onClick={() => navigate('addProduto')}>
         Cadastrar Novo Produto
       </button>
       <table>
