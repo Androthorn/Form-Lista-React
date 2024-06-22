@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { addProduto } from '../data/Produtos'
 
-function ProdutoForm({ addProduto }) {
+function ProdutoForm() {
   const navigate = useNavigate()
   const [nome, setNome] = useState('')
   const [descricao, setDescricao] = useState('')

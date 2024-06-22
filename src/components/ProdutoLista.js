@@ -1,9 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getProdutos } from '../data/Produtos'
 
-function ProdutoLista({ produtos }) {
+function ProdutoLista() {
   const navigate = useNavigate()
-  const produtosOrdenados = [].slice().sort((a, b) => a.valor - b.valor)
+  const produtos = getProdutos()
 
   return (
     <div>
@@ -18,12 +19,14 @@ function ProdutoLista({ produtos }) {
           </tr>
         </thead>
         <tbody>
-          {produtosOrdenados.map((produto, index) => (
-            <tr key={index}>
-              <td>{produto.nome}</td>
-              <td>{produto.valor?.toFixed(2)}</td>
-            </tr>
-          ))}
+          {produtos
+            .sort((a, b) => a.valor - b.valor)
+            .map((produto, index) => (
+              <tr key={index}>
+                <td>{produto.nome}</td>
+                <td>{produto.valor?.toFixed(2)}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
