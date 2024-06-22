@@ -1,3 +1,7 @@
+A simple Form/List landing page where users can insert products and then are redirected to a page where the items are displayed in a crescent order. 
+Below are the Npm default instructions on how to run the project locally.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
