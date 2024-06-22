@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import ProdutoForm from './components/ProdutoForm';
-import ProdutoLista from './components/ProdutoLista';
-import './App.css';
+import React, { useState } from 'react'
+import ProdutoForm from './components/ProdutoForm'
+import ProdutoLista from './components/ProdutoLista'
+import './App.css'
 
 function App() {
-  const [produtos, setProdutos] = useState([]);
-  const [mostrarForm, setMostrarForm] = useState(true);
+  const [produtos, setProdutos] = useState([])
+  const [mostrarForm, setMostrarForm] = useState(true)
 
-  const addProduto = (produto) => {
-    setProdutos([...produtos, produto]);
-  };
+  const addProduto = produto => {
+    setProdutos([...produtos, produto])
+  }
 
   return (
     <div className="App">
@@ -19,7 +19,7 @@ function App() {
         <ProdutoLista produtos={produtos} setMostrarForm={setMostrarForm} />
       )}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
