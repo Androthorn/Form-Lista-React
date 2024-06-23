@@ -8,29 +8,41 @@ function ProdutoForm() {
   const [descricao, setDescricao] = useState('')
   const [valor, setValor] = useState(0)
   const [disponivelVenda, setDisponivelVenda] = useState('sim')
-  const [erroValidacao, setErroValidacao] = useState(null)
+  const [erroValidacao, setErroValidacao] = useState({})
 
   const handleSubmit = e => {
     e.preventDefault()
+    const erros = {}
     if (nome === '') {
-      return setErroValidacao({ nome: 'Campo obrigatório' })
+      erros.nome = 'Campo obrigatório'
     }
+    if (descricao === '') {
+      erros.descricao = 'Campo obrigatório'
+    }
+    if (valor <= 0) {
+      erros.valor = 'O valor deve ser maior que zero'
+    }
+    if (Object.keys(erros).length > 0) {
+      return setErroValidacao(erros)
+    }
+
     addProduto({ nome, descricao, valor: parseFloat(valor), disponivelVenda })
     navigate('/')
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      <header>Formulário</header>
       <label>
         Nome do Produto:
         <input
           type="text"
           value={nome}
           onChange={e => setNome(e.target.value)}
-          className={erroValidacao?.nome ? 'input-error' : ''}
+          className={erroValidacao.nome ? 'input-error' : ''}
         />
       </label>
-      {erroValidacao?.nome && (
+      {erroValidacao.nome && (
         <span className="input-error-message">{erroValidacao.nome}</span>
       )}
       <label>
@@ -39,16 +51,24 @@ function ProdutoForm() {
           type="text"
           value={descricao}
           onChange={e => setDescricao(e.target.value)}
+          className={erroValidacao.descricao ? 'input-error' : ''}
         />
       </label>
+      {erroValidacao.descricao && (
+        <span className="input-error-message">{erroValidacao.descricao}</span>
+      )}
       <label>
         Valor do Produto:
         <input
           type="number"
           value={valor}
           onChange={e => setValor(e.target.value)}
+          className={erroValidacao.valor ? 'input-error' : ''}
         />
       </label>
+      {erroValidacao.valor && (
+        <span className="input-error-message">{erroValidacao.valor}</span>
+      )}
       <label>
         Disponível para venda?
         <select
